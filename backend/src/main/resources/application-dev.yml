@@ -1,0 +1,10 @@
+# Development profile - enable schema auto-update and debug logging
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  ai:
+    vectorstore:
+      pgvector:
+        initialize-schema: true

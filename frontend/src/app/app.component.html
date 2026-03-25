@@ -1,0 +1,65 @@
+<div class="app">
+  <header class="header">
+    <h1>AI Error Analyzer</h1>
+    <p class="subtitle">Paste an error log below and get AI-powered analysis with possible causes and solutions.</p>
+  </header>
+
+  <main class="main">
+    <section class="input-section">
+      <label for="log-input" class="label">Error log</label>
+      <textarea
+        id="log-input"
+        class="textarea"
+        [value]="logInput()"
+        (input)="onLogInput($any($event.target).value)"
+        placeholder="Paste your stack trace, exception message, or error output here..."
+        rows="8"
+        [disabled]="loading()"
+      ></textarea>
+
+      <div class="actions">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="analyze()"
+          [disabled]="loading() || !logInput().trim()"
+        >
+          @if (loading()) {
+            <span class="spinner" aria-hidden="true"></span>
+            Analyzing…
+          } @else {
+            Analyze
+          }
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="clear()"
+          [disabled]="loading()"
+        >
+          Clear
+        </button>
+      </div>
+    </section>
+
+    @if (error()) {
+      <div class="alert alert-error" role="alert">
+        {{ error() }}
+      </div>
+    }
+
+    @if (analysis(); as analysisText) {
+      <section class="result-section">
+        <h2 class="result-title">Analysis</h2>
+        <div class="result-content analysis">{{ analysisText }}</div>
+      </section>
+    }
+
+    @if (relatedErrors(); as related) {
+      <section class="result-section">
+        <h2 class="result-title">Related errors from knowledge base</h2>
+        <div class="result-content related">{{ related }}</div>
+      </section>
+    }
+  </main>
+</div>

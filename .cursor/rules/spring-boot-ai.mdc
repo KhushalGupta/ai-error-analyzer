@@ -1,0 +1,10 @@
+---
+description: Guidelines for Senior-level Spring Boot 3.4 and Spring AI implementation.
+globs: src/main/java/**/*.java
+alwaysApply: true
+---
+- Use **Spring AI** abstractions (ChatClient, VectorStore) for LLM interactions.
+- Implement **Circuit Breakers** (Resilience4j) for all external LLM API calls.
+- Use **Java Records** for DTOs and API request/response payloads.
+- Follow **Clean Architecture**: Controller -> Service -> Repository.
+- Use **Spring AI's ETL pipeline** (DocumentReader, Transformer, Writer) for RAG ingestion.

@@ -1,0 +1,10 @@
+---
+description: Enforce modern Angular 19 patterns using Signals and Standalone components.
+globs: src/app/**/*.ts
+alwaysApply: true
+---
+- Use **Angular Signals** (`signal`, `computed`, `effect`) for all local state.
+- Use **`inject()`** for dependency injection instead of constructor-based DI.
+- Strictly use **Standalone Components**; avoid NgModules.
+- Use modern control flow (`@if`, `@for`, `@switch`) instead of `*ngIf` or `*ngFor`.
+- Enforce `ChangeDetectionStrategy.OnPush` on every component for performance.
